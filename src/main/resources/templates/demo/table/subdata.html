@@ -166,7 +166,7 @@
 		            align: 'center',
 		            title: '商品种类',
 		            formatter: function(value, row, index) {
-		        		var data = [{ index: index, type: value }];
+		        		var data = { index: index, type: value };
 		                return $("#goodsTypeTpl").tmpl(data).html();
                     }
 		        },
