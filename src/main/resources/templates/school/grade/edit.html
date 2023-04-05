@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <th:block th:include="include :: header('修改年级管理')" />
+    <th:block th:include="include :: datetimepicker-css" />
 </head>
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -71,7 +72,6 @@
                 $.operate.save(prefix + "/edit", $('#form-grade-edit').serialize());
             }
         }
-        console.log([[${gradeClass.studentList}]])
         $(function() {
             var options = {
                 data: [[${gradeClass.studentList}]],
@@ -109,8 +109,6 @@
                     title: '出生日期',
                     formatter: function(value, row, index) {
                         var html = $.common.sprintf("<input class='form-control' type='text' name='studentList[%s].birthday' value='%s' placeholder='yyyy-MM-dd'>", index, value);
-                        // var birthday="<div class=\"input-group date\"><input name=\"studentList[%s].birthday\" class=\"form-control\" placeholder=\"yyyy-MM-dd\" type=\"text\" required><span class=\"input-group-addon\"><i class=\"fa fa-calendar\"></i></span></div>"
-                        // var html = $.common.sprintf(birthday, index, value);
                         return html;
                     }
                 },
@@ -130,8 +128,6 @@
                     align: 'center',
                     title: '性别',
                     formatter: function(value, row, index) {
-                        var html = $.common.sprintf("<input class='form-control' type='text' name='studentList[%s].sex' value='%s'>", index, value);
-                        // return html;
                         var data = { index: index, type: value, sexs: sexDatas };
                         return $("#sexsTypeTpl").tmpl(data).html();
                     }

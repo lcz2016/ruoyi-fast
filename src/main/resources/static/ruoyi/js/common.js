@@ -579,7 +579,3 @@ $.ajaxSetup({
     }
 });
 
-$(function() {
-    // var loginName = [[${@permission.getPrincipalProperty('loginName')}]];
-    $.common.watermark({ "watermark_txt": "水印" })
-});

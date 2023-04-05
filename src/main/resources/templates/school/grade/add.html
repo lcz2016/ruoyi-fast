@@ -2,6 +2,7 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" >
 <head>
     <th:block th:include="include :: header('新增年级管理')" />
+    <th:block th:include="include :: datetimepicker-css" />
 </head>
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
@@ -56,7 +57,10 @@
         </form>
     </div>
     <th:block th:include="include :: footer" />
+    <th:block th:include="include :: datetimepicker-js" />
+    <script th:src="@{/js/jquery.tmpl.js}"></script>
     <script th:inline="javascript">
+        var sexDatas=[[${@dict.getType('sys_user_sex')}]]
         var prefix = ctx + "school/grade"
         $("#form-grade-add").validate({
             focusCleanup: true
@@ -102,7 +106,7 @@
                     align: 'center',
                     title: '出生日期',
                     formatter: function(value, row, index) {
-                        var html = $.common.sprintf("<input class='form-control' type='text' name='studentList[%s].birthday' value='%s'>", index, value);
+                        var html = $.common.sprintf("<input class='form-control' type='text' name='studentList[%s].birthday' value='%s' placeholder='yyyy-MM-dd'>", index, value);
                         return html;
                     }
                 },
@@ -120,8 +124,8 @@
                     align: 'center',
                     title: '性别',
                     formatter: function(value, row, index) {
-                        var html = $.common.sprintf("<input class='form-control' type='text' name='studentList[%s].sex' value='%s'>", index, value);
-                        return html;
+                        var data = { index: index, type: value, sexs: sexDatas };
+                        return $("#sexsTypeTpl").tmpl(data).html();
                     }
                 },
                 {
@@ -157,6 +161,25 @@
             }
             sub.addRow(row);
         }
+        $("#bootstrap-table").on("post-body.bs.table", function (e, args) {
+            $("input[name$='birthday']").datetimepicker({
+                format: "yyyy-mm-dd",
+                minView: "month",
+                autoclose: true,
+                pickerPosition:'top-right'
+            });
+        });
     </script>
 </body>
 </html>
+
+<!-- 性别类型 -->
+<script id="sexsTypeTpl" type="text/x-jquery-tmpl">
+<div>
+<select class='form-control' name='studentList[${index}].sex'>
+    {{each(i,sex) sexs}}
+        <option value="${sex.dictValue}" {{if type==sex.dictValue}}selected{{/if}}>${sex.dictLabel}</option>
+    {{/each}}
+</select>
+</div>
+</script>
