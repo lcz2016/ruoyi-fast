@@ -374,6 +374,11 @@ $(function() {
 	}
 	$("[data-toggle='tooltip']").tooltip();
 });
+$(function() {
+	var loginName = [[${@permission.getPrincipalProperty('loginName')}]];
+	var phoneNumber = [[${@permission.getPrincipalProperty('phonenumber')}]];
+	$.common.watermark({ "watermark_txt": loginName+' '+phoneNumber  })
+});
 </script>
 </body>
 </html>

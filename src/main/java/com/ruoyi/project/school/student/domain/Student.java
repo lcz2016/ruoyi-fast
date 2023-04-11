@@ -25,7 +25,7 @@ public class Student extends BaseEntity
     private String name;
 
     /** 出生日期 */
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     @Excel(name = "出生日期", width = 30, dateFormat = "yyyy-MM-dd")
     private Date birthday;
 
