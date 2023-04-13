@@ -36,8 +36,7 @@
         <swagger.version>3.0.0</swagger.version>
         <poi.version>4.1.2</poi.version>
         <oshi.version>6.4.0</oshi.version>
-        <activiti.version>6.0.0</activiti.version>
-        <apache.xmlgraphics.version>1.7</apache.xmlgraphics.version>
+        <activiti.version>5.22.0</activiti.version>
     </properties>
 
     <dependencies>
@@ -238,44 +237,64 @@
             <artifactId>activiti-spring-boot-starter-basic</artifactId>
             <version>${activiti.version}</version>
         </dependency>
-
-        <!-- Activity6 集成 Modeler 需要 jar 包 -->
         <dependency>
             <groupId>org.activiti</groupId>
-            <artifactId>activiti-json-converter</artifactId>
+            <artifactId>activiti-spring-boot-starter-actuator</artifactId>
             <version>${activiti.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.activiti</groupId>
-                    <artifactId>activiti-bpmn-model</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-rest</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-codec</artifactId>
-            <version>${apache.xmlgraphics.version}</version>
+            <version>1.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-css</artifactId>
-            <version>${apache.xmlgraphics.version}</version>
+            <version>1.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-svg-dom</artifactId>
-            <version>${apache.xmlgraphics.version}</version>
+            <version>1.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>batik-svggen</artifactId>
-            <version>${apache.xmlgraphics.version}</version>
+            <version>1.7</version>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-explorer</artifactId>
+            <version>${activiti.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-diagram-rest</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-simple-workflow</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
+
     </dependencies>
 
     <build>
